@@ -14,7 +14,10 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Made with Intent Pageview",
-  "categories": ["ANALYTICS", "PERSONALIZATION"],
+  "categories": [
+    "ANALYTICS",
+    "PERSONALIZATION"
+  ],
   "brand": {
     "id": "brand_dummy",
     "displayName": "",
@@ -110,6 +113,12 @@ ___TEMPLATE_PARAMETERS___
         "displayName": "On sale?",
         "simpleValueType": true,
         "help": "0 or 1"
+      },
+      {
+        "type": "TEXT",
+        "name": "page_category",
+        "displayName": "Page Category",
+        "simpleValueType": true
       }
     ]
   }
@@ -121,8 +130,12 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 // Enter your template code here.
 const log = require('logToConsole');
 const callInWindow = require('callInWindow');
+const setInWindow = require('setInWindow');
 
 (function() {
+  
+  setInWindow('intent', {}, false);
+  setInWindow('intent.dataLayer', [], false);
   
   const productTags = {
     product_name: data.item_name || '',
@@ -144,7 +157,8 @@ const callInWindow = require('callInWindow');
     type: 'Pageview',
     data: {
       page_type: data.pageType || '',
-      product_tags: data.pageType == 'pdp' ? productTags : {}
+      product_tags: data.pageType == 'pdp' ? productTags : {},
+      page_category: data.page_category || ''
     }
   });
   
@@ -227,6 +241,84 @@ ___WEB_PERMISSIONS___
                     "boolean": true
                   }
                 ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "intent"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  }
+                ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "intent.dataLayer"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  }
+                ]
               }
             ]
           }
@@ -249,5 +341,3 @@ scenarios: []
 ___NOTES___
 
 Created on 13/05/2024, 17:36:30
-
-
