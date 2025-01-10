@@ -136,22 +136,6 @@ const setInWindow = require('setInWindow');
   
   setInWindow('intent', {}, false);
   setInWindow('intent.dataLayer', [], false);
-  
-  const productTags = {
-    product_name: data.item_name || '',
-    product_sku: data.item_id || '',
-    product_price: data.price || '0',
-    product_currency: data.currency || '',
-    product_brand: data.item_brand || '',
-    product_category: data.item_category || '',
-    product_subcategory: data.item_subcategory || '',
-    product_variant: data.item_variant || '',
-    product_image_url: data.image_url || '',
-    product_rating: data.item_rating || '',
-    product_review_count: data.item_review_count || '',
-    product_availability: data.item_availability || 1,
-    product_on_sale: data.item_on_sale || 0,
-  };
 
   let productTags = {};
 
