@@ -15,7 +15,7 @@
 homepage: "https://www.madewithintent.ai"
 documentation: "https://madewithintent.notion.site/Made-with-Intent-GTM-Template-Implementation-65d14efde9ff44acb3ad1276e7660326"
 versions:
-  - sha: 3d6d248b503e26afa81b01000e1eeb79d8002fe4
+  - sha: 46926e3d99fd0c0f814cb6a60359cc4b40fa23a4
     changeNotes: Updated page view code so page type not required 
   - sha: d6a7c5949b0158c95ab7d215e455492697ef19f2
     changeNotes: New field page category and allow pv to fire before main tag loads
