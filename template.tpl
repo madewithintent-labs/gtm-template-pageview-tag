@@ -152,12 +152,54 @@ const setInWindow = require('setInWindow');
     product_availability: data.item_availability || 1,
     product_on_sale: data.item_on_sale || 0,
   };
+
+  let productTags = {};
+
+  if (data.item_name) {
+    productTags['product_name'] = data.item_name;
+  }
+  if (data.item_id) {
+    productTags['product_sku'] = data.item_id;
+  }
+  if (data.price) {
+    productTags['product_price'] = data.price;
+  }
+  if (data.currency) {
+    productTags['product_currency'] = data.currency;
+  }
+  if (data.item_brand) {
+    productTags['product_brand'] = data.item_brand;
+  }
+  if (data.item_category) {
+    productTags['product_category'] = data.item_category;
+  }
+  if (data.item_subcategory) {
+    productTags['product_subcategory'] = data.item_subcategory;
+  }
+  if (data.item_variant) {
+    productTags['product_variant'] = data.item_variant;
+  }
+  if (data.image_url) {
+    productTags['product_image_url'] = data.image_url;
+  }
+  if (data.item_rating) {
+    productTags['product_rating'] = data.item_rating;
+  }
+  if (data.item_review_count) {
+    productTags['product_review_count'] = data.item_review_count;
+  }
+  if (data.item_availability) {
+    productTags['product_availability'] = data.item_availability;
+  }
+  if (data.item_on_sale) {
+    productTags['product_on_sale'] = data.item_on_sale;
+  }
   
   callInWindow('intent.dataLayer.push', {
     type: 'Pageview',
     data: {
       page_type: data.pageType || '',
-      product_tags: data.pageType == 'pdp' ? productTags : {},
+      product_tags: productTags,
       page_category: data.page_category || ''
     }
   });
