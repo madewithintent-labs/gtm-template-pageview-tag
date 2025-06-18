@@ -121,6 +121,68 @@ ___TEMPLATE_PARAMETERS___
         "simpleValueType": true
       }
     ]
+  },
+  {
+    "type": "GROUP",
+    "name": "Custom Affinities",
+    "displayName": "Custom Affinities",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "attribute_1",
+        "displayName": "Attribute 1",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "attribute_2",
+        "displayName": "Attribute 2",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "attribute_3",
+        "displayName": "Attribute 3",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "attribute_4",
+        "displayName": "Attribute 4",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "attribute_5",
+        "displayName": "Attribute 5",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "attribute_6",
+        "displayName": "Attribute 6",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "attribute_7",
+        "displayName": "Attribute 7",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "attribute_8",
+        "displayName": "Attribute 8",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "attribute_9",
+        "displayName": "Attribute 9",
+        "simpleValueType": true
+      }
+    ]
   }
 ]
 
@@ -179,13 +241,22 @@ const setInWindow = require('setInWindow');
     productTags['product_on_sale'] = data.item_on_sale;
   }
   
+  const attributes = {};
+  for (let i = 1; i <= 9; i++) {
+    const key = "attribute_" + i;
+    if (data[key]) {
+      attributes[key] = data[key];
+    }
+  }
+  
   callInWindow('intent.dataLayer.push', {
     type: 'Pageview',
     data: {
       page_type: data.pageType || '',
       product_tags: productTags,
       page_category: data.page_category || ''
-    }
+    },
+    attributes: attributes
   });
   
   data.gtmOnSuccess();
