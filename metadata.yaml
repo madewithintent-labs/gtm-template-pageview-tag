@@ -15,6 +15,8 @@
 homepage: "https://www.madewithintent.ai"
 documentation: "https://madewithintent.notion.site/Made-with-Intent-GTM-Template-Implementation-65d14efde9ff44acb3ad1276e7660326"
 versions:
+  - sha: 5f56ff160444db9c41846fd63bd8e343c8dd9c68
+    changeNotes: Support Profile attributes in page view tag
   - sha: e8a26b1b831ccffe5d7f45ed3df544f312f1bab4
     changeNotes: Add attribute fields for custom affinities
   - sha: 46926e3d99fd0c0f814cb6a60359cc4b40fa23a4
