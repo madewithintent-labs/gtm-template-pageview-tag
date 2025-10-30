@@ -183,6 +183,44 @@ ___TEMPLATE_PARAMETERS___
         "simpleValueType": true
       }
     ]
+  },
+  {
+    "type": "GROUP",
+    "name": "Profile Attributes",
+    "displayName": "Profile Attributes",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "profile_1",
+        "displayName": "Profile Attribute 1",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "profile_2",
+        "displayName": "Profile Attribute 2",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "profile_3",
+        "displayName": "Profile Attribute 3",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "profile_4",
+        "displayName": "Profile Attribute 4",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "profile_5",
+        "displayName": "Profile Attribute 5",
+        "simpleValueType": true
+      }
+    ]
   }
 ]
 
@@ -249,6 +287,14 @@ const setInWindow = require('setInWindow');
     }
   }
   
+  const profile_attributes = {};
+  for (let i = 1; i <= 5; i++) {
+    const key = "profile_" + i;
+    if (data[key]) {
+      profile_attributes[key] = data[key];
+    }
+  }
+  
   callInWindow('intent.dataLayer.push', {
     type: 'Pageview',
     data: {
@@ -256,7 +302,8 @@ const setInWindow = require('setInWindow');
       product_tags: productTags,
       page_category: data.page_category || ''
     },
-    attributes: attributes
+    attributes: attributes,
+    profile: profile_attributes
   });
   
   data.gtmOnSuccess();
